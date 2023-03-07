@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, nanoid } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const baseUrl = 'https://api.spacexdata.com/v4/rockets';
@@ -18,7 +18,21 @@ const rocketsSlice = createSlice({
   name: 'rockets',
   initialState,
   reducers: {
-
+    addRocket: {
+      reducer(state, action) {
+        state.allRockets.push(action.payload);
+      },
+      prepare(name, type, flickrImages) {
+        return {
+          payload: {
+            id: nanoid(),
+            name,
+            type,
+            flickrImages,
+          },
+        };
+      },
+    },
   },
   extraReducers: (builder) => {
     builder
