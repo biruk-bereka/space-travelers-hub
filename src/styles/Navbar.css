@@ -1,0 +1,26 @@
+.header {
+  display: flex;
+  margin: 2rem;
+  margin-right: 5rem;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+nav ul {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-items li {
+  list-style: none;
+}
+
+.nav-items li a {
+  text-decoration: none;
+}
