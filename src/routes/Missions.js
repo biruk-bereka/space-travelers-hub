@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { Table, Button } from 'react-bootstrap';
 import { fetchMissions } from '../redux/missions/missionsSlice';
@@ -6,6 +7,7 @@ import '../styles/Missions.css';
 
 const Missions = () => {
   const { missions } = useSelector((store) => store.missions);
+  
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -13,6 +15,7 @@ const Missions = () => {
   }, []);
 
   return (
+
     <div className="table-container">
       <Table striped bordered hover size="sm">
         <thead>
