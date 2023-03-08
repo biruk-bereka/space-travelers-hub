@@ -11,7 +11,18 @@ const initialState = {
 
 export const getRockets = createAsyncThunk('rockets/fetchRockets', async () => {
   const response = await axios.get(baseUrl);
-  return response.data;
+  const arr = [];
+  for (let i = 0; i < response.data.length; i += 1) {
+    const obj = {
+      id: response.data[i].id,
+      name: response.data[i].name,
+      type: response.data[i].type,
+      description: response.data[i].description,
+      flickrImages: response.data[i].flickr_images,
+    };
+    arr.push(obj);
+  }
+  return arr;
 });
 
 const rocketsSlice = createSlice({
@@ -58,7 +69,7 @@ const rocketsSlice = createSlice({
       ));
   },
 });
-export const allRockets = (state) => state.rockets.allRocket;
+export const getAllRockets = (state) => state.rockets.allRockets;
 export const getRocketsStatus = (state) => state.rockets.status;
 export const getRocketsError = (state) => state.rockets.error;
 export default rocketsSlice.reducer;
