@@ -7,7 +7,7 @@ import '../styles/Missions.css';
 
 const Missions = () => {
   const { missions } = useSelector((store) => store.missions);
-  
+
   const dispatch = useDispatch();
 
   useEffect(() => {
