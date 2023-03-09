@@ -39,7 +39,7 @@ const missionsSlice = createSlice({
           if (id !== mission.missionID) {
             return mission;
           }
-          return { ...mission, reserved: true };
+          return { ...mission, joined: true };
         }),
       };
     },
@@ -51,7 +51,7 @@ const missionsSlice = createSlice({
           if (id !== mission.missionID) {
             return mission;
           }
-          return { ...mission, reserved: false };
+          return { ...mission, joined: false };
         }),
       };
     },

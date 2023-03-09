@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { joinMission, leaveMission } from '../redux/missions/missionsSlice';
 
 const Mission = ({
-  id, name, description, reserved,
+  id, name, description, joined,
 }) => {
   const dispatch = useDispatch();
   return (
@@ -13,13 +13,13 @@ const Mission = ({
       <td>{name}</td>
       <td className="description">{description}</td>
       <td className="align-middle text-center">
-        {reserved
+        {joined
           ? <Badge bg="info">Active Member</Badge>
           : <Badge bg="secondary">NOT A MEMBER</Badge>}
       </td>
       <td className="align-middle text-center">
         {
-            reserved
+            joined
               ? <Button variant="danger" onClick={() => dispatch(leaveMission(id))}>Leave Mission</Button>
               : <Button variant="success" onClick={() => dispatch(joinMission(id))}>Join Mission</Button>
         }
@@ -32,6 +32,6 @@ Mission.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  reserved: PropTypes.bool.isRequired,
+  joined: PropTypes.bool.isRequired,
 };
 export default Mission;
