@@ -1,6 +1,6 @@
 .list-container {
-    display: grid;
-    grid-template-columns: auto auto;
-    gap: 2rem;
-    margin: 0 5rem;
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 2rem;
+  margin: 0 5rem;
 }
