@@ -25,3 +25,18 @@ code {
     'Courier New',
     monospace;
 }
+
+.rockets {
+  font-family: 'Roboto', sans-serif;
+}
+
+@media screen and (max-width: 450px) {
+  .item {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .rockets h4 {
+    text-align: center;
+  }
+}
