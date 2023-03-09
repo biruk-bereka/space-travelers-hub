@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice, nanoid } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const baseUrl = 'https://api.spacexdata.com/v4/rockets';
@@ -19,6 +19,7 @@ export const getRockets = createAsyncThunk('rockets/fetchRockets', async () => {
       type: response.data[i].type,
       description: response.data[i].description,
       flickrImages: response.data[i].flickr_images,
+      reserved: false,
     };
     arr.push(obj);
   }
@@ -29,20 +30,18 @@ const rocketsSlice = createSlice({
   name: 'rockets',
   initialState,
   reducers: {
-    addRocket: {
-      reducer(state, action) {
-        state.allRockets.push(action.payload);
-      },
-      prepare(name, type, flickrImages) {
-        return {
-          payload: {
-            id: nanoid(),
-            name,
-            type,
-            flickrImages,
-          },
-        };
-      },
+    reserveRocket: (state, action) => {
+      const rocketId = action.payload;
+      console.log('rocket id', rocketId);
+      return {
+        ...state,
+        allRockets: state.allRockets.map((rocket) => {
+          if (rocket.id === rocketId) {
+            return { ...rocket, reserved: true };
+          }
+          return rocket;
+        }),
+      };
     },
   },
   extraReducers: (builder) => {
@@ -69,7 +68,10 @@ const rocketsSlice = createSlice({
       ));
   },
 });
-export const getAllRockets = (state) => state.rockets.allRockets;
-export const getRocketsStatus = (state) => state.rockets.status;
-export const getRocketsError = (state) => state.rockets.error;
+
+export const { reserveRocket } = rocketsSlice.actions;
+// export const getAllRockets = (state) => state.rockets.allRockets;
+// export const getRocketsStatus = (state) => state.rockets.status;
+// export const getRocketsError = (state) => state.rockets.error;
+export const getRocketsObj = (state) => state.rockets;
 export default rocketsSlice.reducer;
