@@ -68,10 +68,5 @@ const rocketsSlice = createSlice({
       ));
   },
 });
-
 export const { reserveRocket } = rocketsSlice.actions;
-// export const getAllRockets = (state) => state.rockets.allRockets;
-// export const getRocketsStatus = (state) => state.rockets.status;
-// export const getRocketsError = (state) => state.rockets.error;
-export const getRocketsObj = (state) => state.rockets;
 export default rocketsSlice.reducer;

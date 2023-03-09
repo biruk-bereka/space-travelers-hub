@@ -1,20 +1,19 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getRocketsObj } from '../redux/rockets/rocketsSlice';
+import { getRockets } from '../redux/rockets/rocketsSlice';
 import Rocket from '../components/Rocket';
 
 const Rockets = () => {
   const dispatch = useDispatch();
-  const rocketsArr = useSelector(getRocketsObj);
-  const rockets = rocketsArr.allRockets;
-  const rockesStatus = rocketsArr.status;
-  console.log('all rockets', rockets);
+  const { allRockets } = useSelector((store) => store.rockets);
+  const { status } = useSelector((store) => store.rockets);
+  const rockets = allRockets;
 
   useEffect(() => {
-    if (rockesStatus === 'idle') {
-      dispatch(getRocketsObj());
+    if (status === 'idle') {
+      dispatch(getRockets());
     }
-  }, [rockesStatus, dispatch]);
+  }, [status, dispatch]);
 
   return (
     <section className="rockets">
