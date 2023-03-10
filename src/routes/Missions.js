@@ -12,7 +12,9 @@ const Missions = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchMissions());
+    if (missions.length === 0) {
+      dispatch(fetchMissions());
+    }
   }, []);
 
   return (
@@ -24,7 +26,6 @@ const Missions = () => {
             <th>Mission</th>
             <th>Description</th>
             <th>Status</th>
-            <th>Join/Leave</th>
           </tr>
         </thead>
         <tbody>
@@ -34,7 +35,7 @@ const Missions = () => {
               id={mission.missionID}
               name={mission.missionName}
               description={mission.description}
-              reserved={mission.reserved}
+              joined={mission.joined}
             />
           ))}
         </tbody>
