@@ -58,9 +58,7 @@ After you're finished please remove all the comments and instructions!
 
 # 📖 [Space Travelers' Hub] <a name="about-project"></a>
 
-> "Space Travelers' Hub" is a website in which users can view missions and rockets. And join and leave missions, reserve and cancel rockets.
-
-**[Space Travelers' Hub ]** is a...
+**Space Travelers' Hub** is is a website in which users can view missions and rockets. And join and leave missions, reserve and cancel rockets.
 
 ## 🛠 Built With <a name="built-with"></a>
 
