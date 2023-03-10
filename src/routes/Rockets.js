@@ -7,7 +7,6 @@ const Rockets = () => {
   const dispatch = useDispatch();
   const { allRockets } = useSelector((store) => store.rockets);
   const { status } = useSelector((store) => store.rockets);
-  const rockets = allRockets;
 
   useEffect(() => {
     if (status === 'idle') {
@@ -19,7 +18,7 @@ const Rockets = () => {
     <section className="rockets">
       <ul>
         {
-          rockets.map((rocket) => (
+          allRockets.map((rocket) => (
             <Rocket key={rocket.id} rocket={rocket} />
           ))
         }
