@@ -1,43 +1,49 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import Rocket from '../components/Rocket';
-import { getRockets } from '../redux/rockets/rocketsSlice';
+import React from 'react';
+import { ListGroup } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
+import '../styles/Myprofile.css';
 
 const Myprofile = () => {
-  const dispatch = useDispatch();
+  const { missions } = useSelector((store) => store.missions);
   const { allRockets } = useSelector((store) => store.rockets);
-  const { status } = useSelector((store) => store.rockets);
+  const joinedMissions = missions.filter((mission) => mission.joined);
   const reservedRockets = allRockets.filter((rocket) => rocket.reserved === true);
 
-  let content;
+  let rocketContent;
 
   if (reservedRockets.length === 0) {
-    content = <p>No reserved rocket</p>;
+    rocketContent = <p>No reserved rocket</p>;
   } else {
-    content = (
-      <ul className="ps-0">
+    rocketContent = (
+      <ListGroup>
         {
           reservedRockets.map((rocket) => (
-            <Rocket key={rocket.id} rocket={rocket} />
+            <ListGroup.Item key={rocket.id}>{rocket.name}</ListGroup.Item>
           ))
         }
-      </ul>
+      </ListGroup>
     );
   }
 
-  useEffect(() => {
-    if (status === 'idle') {
-      dispatch(getRockets());
-    }
-  }, [status, dispatch]);
-
   return (
-    <div className="m-4">
-      <section className="container-fluid shadow p-3 mb-5 bg-body-tertiary rounded">
-        <h4 className="py-3">Reserved rockets</h4>
-        {content}
-      </section>
+    <div className="list-container">
+      <div>
+        <h4>My Missions</h4>
+        <ListGroup>
+          {
+            joinedMissions.map((mission) => (
+              <ListGroup.Item key={mission.missionID}>{mission.missionName}</ListGroup.Item>
+            ))
+          }
+        </ListGroup>
+      </div>
+      <div>
+        <h4>My Rockets</h4>
+        {rocketContent}
+      </div>
+
     </div>
   );
 };
+
 export default Myprofile;
