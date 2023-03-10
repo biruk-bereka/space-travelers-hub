@@ -12,7 +12,7 @@ const Myprofile = () => {
   let rocketContent;
 
   if (reservedRockets.length === 0) {
-    rocketContent = <p>No reserved rocket</p>;
+    rocketContent = <p style={{ color: 'red' }}>No reserved rocket</p>;
   } else {
     rocketContent = (
       <ListGroup>
@@ -29,13 +29,19 @@ const Myprofile = () => {
     <div className="list-container">
       <div>
         <h4>My Missions</h4>
-        <ListGroup>
-          {
+        {
+          joinedMissions.length === 0 ? <p style={{ color: 'red' }}>No joined missions</p>
+
+            : (
+              <ListGroup>
+                {
             joinedMissions.map((mission) => (
               <ListGroup.Item key={mission.missionID}>{mission.missionName}</ListGroup.Item>
             ))
           }
-        </ListGroup>
+              </ListGroup>
+            )
+}
       </div>
       <div>
         <h4>My Rockets</h4>
