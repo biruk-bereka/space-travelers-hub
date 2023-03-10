@@ -5,8 +5,7 @@ import Rocket from '../components/Rocket';
 
 const Rockets = () => {
   const dispatch = useDispatch();
-  const { allRockets } = useSelector((store) => store.rockets);
-  const { status } = useSelector((store) => store.rockets);
+  const { allRockets, status } = useSelector((store) => store.rockets);
 
   useEffect(() => {
     if (status === 'idle') {

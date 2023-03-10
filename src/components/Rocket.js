@@ -17,7 +17,7 @@ const Rocket = ({ rocket }) => {
         Cancel Reservation
       </button>
     );
-    reserveEtiquette = <span className="badge text-bg-primary">Reserved</span>;
+    reserveEtiquette = <span className="me-2 badge text-bg-primary">Reserved</span>;
   } else {
     button = (
       <button
@@ -43,13 +43,6 @@ const Rocket = ({ rocket }) => {
             {rocket.description}
           </p>
           {button}
-          {/* <button
-            type="button"
-            className="btn btn-primary"
-            onClick={() => dispatch(reserveRocket(rocket.id))}
-          >
-            Reserve Rocket
-          </button> */}
         </div>
       </div>
     </li>
