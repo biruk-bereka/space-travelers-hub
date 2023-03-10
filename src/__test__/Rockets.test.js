@@ -39,7 +39,7 @@ describe('Rockets', () => {
         <Rockets />
       </Provider>,
     );
-    const imgElement = screen.getByAltText('Falcon 1'); 
+    const imgElement = screen.getByAltText('Falcon 1');
     expect(screen.getByText('Falcon 1')).toBeInTheDocument();
     expect(screen.getByText('A small, partially reusable launch vehicle designed by SpaceX.')).toBeInTheDocument();
     expect(imgElement).toBeInTheDocument();
